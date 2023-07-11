@@ -129,10 +129,11 @@ itemLists.addEventListener("click", (e) => {
       itemLists.children[i].className = `list-group-item list_item_${i+1}`
     }
    }
-   addItemForm.className = "form none"
-   list_array.splice(li_no_2-1,1)
+   addItemForm.className = "form none"    
+   const list_array_ = JSON.parse(localStorage.getItem("list"))
+   list_array_.splice(li_no_2-1,1)
 
-   localStorage.setItem("list", JSON.stringify(list_array))
+   localStorage.setItem("list", JSON.stringify(list_array_))
   }
  }
 })
@@ -210,11 +211,12 @@ itemLists.addEventListener("click", (e) => {
         const li_no = li.className.split("")
         console.log(li_no)
         const li_no_2 = (Number(li_no[li_no.length - 1]))
-        list_array[li_no_2-1].Text = input.value
+        const list_array_ = JSON.parse(localStorage.getItem("list"))
+        list_array_[li_no_2-1].Text = input.value
         input.value = ""
         
 
-        localStorage.setItem("list", JSON.stringify(list_array))
+        localStorage.setItem("list", JSON.stringify(list_array_))
 
       }
     }

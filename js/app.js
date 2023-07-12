@@ -72,42 +72,62 @@ btn_submit.addEventListener("click", (e) => {
     li.className = `list-group-item list_item_${num_item + 1}`
     const list_array_ = JSON.parse(localStorage.getItem("list"))
 
-
-    list_array_.push({
-      "No": num_item + 1,
-      "Text": newItem
-    })
-    localStorage.setItem("list", JSON.stringify(list_array_))
-
-    const localStorage_value = JSON.parse(localStorage.getItem("list"))[num_item]
-    const newTextNode = document.createTextNode(localStorage_value.Text)
-
-    li.appendChild(newTextNode)
-    const div = document.createElement("div")
-    div.className = "list-actions"
-
-    const btnDel = document.createElement("button")
-    const btnEdit = document.createElement("button")
-
-    btnDel.className = "btn btn-danger"
-    btnDel.appendChild(document.createTextNode("Delete"))
-
-    btnEdit.className = "btn btn-edit"
-    btnEdit.appendChild(document.createTextNode("Edit"))
-
-    div.appendChild(btnEdit)
-    div.appendChild(btnDel)
-
-    li.appendChild(div)
-
-    itemLists.appendChild(li)
-    
     if (inputItem.value === ""){
-    alert("Invalid Input!")
-    li.remove()
-    }
+      alert("Invalid Input!")
+      li.appendChild(newTextNode)
+      const div = document.createElement("div")
+      div.className = "list-actions"
+  
+      const btnDel = document.createElement("button")
+      const btnEdit = document.createElement("button")
+  
+      btnDel.className = "btn btn-danger"
+      btnDel.appendChild(document.createTextNode("Delete"))
+  
+      btnEdit.className = "btn btn-edit"
+      btnEdit.appendChild(document.createTextNode("Edit"))
+  
+      div.appendChild(btnEdit)
+      div.appendChild(btnDel)
+  
+      li.appendChild(div)
+  
+      itemLists.appendChild(li)
+      li.remove()
+      }
+      else{
+        list_array_.push({
+          "No": num_item + 1,
+          "Text": newItem
+        })
+        localStorage.setItem("list", JSON.stringify(list_array_))
     
-    inputItem.value = ""
+        const localStorage_value = JSON.parse(localStorage.getItem("list"))[num_item]
+        const newTextNode = document.createTextNode(localStorage_value.Text)
+    
+        li.appendChild(newTextNode)
+        const div = document.createElement("div")
+        div.className = "list-actions"
+    
+        const btnDel = document.createElement("button")
+        const btnEdit = document.createElement("button")
+    
+        btnDel.className = "btn btn-danger"
+        btnDel.appendChild(document.createTextNode("Delete"))
+    
+        btnEdit.className = "btn btn-edit"
+        btnEdit.appendChild(document.createTextNode("Edit"))
+    
+        div.appendChild(btnEdit)
+        div.appendChild(btnDel)
+    
+        li.appendChild(div)
+    
+        itemLists.appendChild(li)
+        
+        inputItem.value = ""
+      }
+    
     
   }
     
